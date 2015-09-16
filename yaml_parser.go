@@ -124,7 +124,7 @@ func environmentExists(environments Environments, environmentName interface{}) b
 	return false
 }
 
-func resolveValues(values map[string]*Value) map[string]interface{} {
+func resolveValues(values map[string]*Value) (map[string]interface{}, error) {
 	output := map[string]interface{}{}
 
 	// make graph
@@ -138,8 +138,7 @@ func resolveValues(values map[string]*Value) map[string]interface{} {
 	// sort
 	order, _, err := graphs.TopologicalSort(graph)
 	if err != nil {
-		// todo: error
-		return output
+		return output, err
 	}
 
 	// create output
@@ -157,7 +156,7 @@ func resolveValues(values map[string]*Value) map[string]interface{} {
 		}
 		output[environmentName] = environmentValue
 	}
-	return output
+	return output, nil
 }
 
 func makeConfig(yamlData YamlData) (*Config, []error) {
@@ -177,8 +176,12 @@ func makeConfig(yamlData YamlData) (*Config, []error) {
 					errs = append(errs, errors.New(fmt.Sprintf("%s: %s", variableName, err)))
 				}
 			} else {
-				resolvedValues := resolveValues(environmentValueMap)
-				config.SetValues(variableName, resolvedValues)
+				resolvedValues, err := resolveValues(environmentValueMap)
+				if err != nil {
+					errs = append(errs, errors.New(fmt.Sprintf("%s: Cyclic environment symobls are detected", variableName)))
+				} else {
+					config.SetValues(variableName, resolvedValues)
+				}
 			}
 		} else {
 			errs = append(errs, errors.New(fmt.Sprintf("%s value must be type of Number, String, Boolean, null or Array", variableName)))
