@@ -109,14 +109,14 @@ Use different YAML file:
 envar print prod --file another-envar.yml
 ```
 
-Specify output format (Docker compatible env_file format):
+Specify output format ([Docker compatible env-file format](https://docs.docker.com/reference/commandline/run)):
 
 ```console
 $ envar print stag --output envfile
 # environment: stag
-VAR1="foo"
-VAR2="bar"
-VAR3="B"
+VAR1=foo
+VAR2=bar
+VAR3=B
 ```
 
 Importing variables into shell session:
