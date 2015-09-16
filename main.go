@@ -20,10 +20,11 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "envar"
 	app.Usage = "Manage environment variable at one place"
+	app.Version = Version
 	app.Commands = []cli.Command{
 		{
 			Name:   "print",
-			Usage:  "print environment variables",
+			Usage:  "Print environment variables",
 			Action: printCmd,
 			Flags: []cli.Flag{
 				cli.StringFlag{
