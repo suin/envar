@@ -15,7 +15,7 @@ Envar solves these problems by defining environment variables in single YAML fil
 
 
 * Manages environment variables in a single YAML file.
-* Validates environment variables definition and warns errors if there are missing variables. 
+* Validates environment variables definition and warns errors if there are missing variables.
 * A simple CLI tool which runs any major platforms: Linux, Mac and Windows.
 
 ## YAML definition example
@@ -131,7 +131,7 @@ $ env | grep VAR
 
 ## envar.yaml
 
-enver.yml is an environment definition file. 
+enver.yml is an environment definition file.
 
 The YAML data is consists of two sections: `environments` and `variables`.
 
@@ -152,7 +152,7 @@ environments: [dev, stag, testing, preview, prod]
 
 ### `variables` section
 
-In `variables` section, variables are defined. 
+In `variables` section, variables are defined.
 
 In the case that the same value are used in all environments, the variable simply can be defined as primitive value:
 
@@ -166,7 +166,7 @@ In the case that all environments use different values, the variable is defined 
 ```yaml
 variables:
   DB_HOST: [127.0.0.1, staging.db.local, production.db.local]
-``` 
+```
 
 
 #### Environment symbols
@@ -184,7 +184,7 @@ variables:
 
 This definition can be rewrited with environment symbol because staging value and production value are same.
 
-```
+```yaml
 variables:
   DB_PASS: [root, FzN9HUrTox, {stag}]
 ```
@@ -212,4 +212,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
