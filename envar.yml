@@ -1,0 +1,5 @@
+environments: [dev, stag, prod]
+variables:
+  DB_HOST: localhost
+  DB_USER: [root, tester, admin]
+  FOO: \foo`""''$\bar

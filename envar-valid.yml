@@ -1,0 +1,20 @@
+environments: [dev, stag, prod]
+variables:
+  INT: 1
+  FLOOT: 1.1
+  BOOL: true
+  N: null
+  STRING: foobar
+  UTF_8: 日本語
+  ARR: [a, b, c]
+  ARR_VAR: [a, {dev}, {1}]
+  ARR_VAR2:
+    - a
+    - b
+    - {stag}
+  TOO_FEW_ARGUMENTS: [a, b]
+  TOO_LONG_ARGUMENTS: [a, b, c, d]
+  INVALID_SYMBOL_TYPE: [a, b, [foo]]
+  INVALID_SYMBOL_FORMAT: [a, b, {bar: 2}]
+  INVALID_SYMBOL_LENGTH: [a, b, {dev, stag}]
+  INVALID_TYPE: {}
