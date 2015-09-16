@@ -73,7 +73,7 @@ func printCmd(c *cli.Context) {
 	}
 	sort.Sort(variables) // return はされない点には注意
 
-	println(format(environmentName, variables))
+	fmt.Fprintf(os.Stdout, format(environmentName, variables))
 }
 
 func getFormatsList() []string {
