@@ -1,0 +1,23 @@
+environments: [dev, stag, prod]
+variables:
+  NULL_VALUE: null
+  BOOL_VALUE1: true
+  BOOL_VALUE2: false
+  NUMBER_VALUE1: 123
+  NUMBER_VALUE2: 1_000_000
+  NUMBER_VALUE3: 3.14
+  NUMBER_VALUE4: -360
+  STRING_VALUE1: hello
+  STRING_VALUE2: Hello World!
+  STRING_VALUE3: '"quoted value"'
+  STRING_VALUE4:
+    first line
+    second line
+  STRING_VALUE5: >
+    first line
+    second line
+  STRING_VALUE6: |
+    first line
+    second line
+  STRING_VALUE7: !!str 1234
+  STRING_VALUE8: ""

@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"github.com/thcyron/graphs"
 	"gopkg.in/yaml.v2"
-	"reflect"
 )
 
 type Environments []string
@@ -189,46 +188,6 @@ func makeConfig(yamlData YamlData) (*Config, []error) {
 	}
 
 	return config, errs
-}
-
-func isSlice(v interface{}) bool {
-	switch reflect.ValueOf(v).Kind() {
-	case reflect.Slice:
-		return true
-	}
-	return false
-}
-
-func isMap(v interface{}) bool {
-	switch reflect.ValueOf(v).Kind() {
-	case reflect.Map:
-		return true
-	}
-	return false
-}
-
-func isScalar(v interface{}) bool {
-	if v == nil {
-		return true
-	}
-	switch reflect.ValueOf(v).Kind() {
-	case reflect.Bool,
-		reflect.Int,
-		reflect.Int8,
-		reflect.Int16,
-		reflect.Int32,
-		reflect.Int64,
-		reflect.Uint,
-		reflect.Uint8,
-		reflect.Uint16,
-		reflect.Uint32,
-		reflect.Uint64,
-		reflect.Float32,
-		reflect.Float64,
-		reflect.String:
-		return true
-	}
-	return false
 }
 
 func parse(data string) (config *Config, errs []error) {

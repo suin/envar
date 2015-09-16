@@ -67,14 +67,15 @@ func printCmd(c *cli.Context) {
 		}
 		os.Exit(1)
 	}
-	if (environmentExists(config.Environments, environmentName) == false) {
+	if environmentExists(config.Environments, environmentName) == false {
 		fmt.Fprintf(os.Stderr, "No such a environment: %s\n", environmentName)
 		os.Exit(1)
 	}
 
 	variables := FormatVariables{}
 	for name, values := range config.Variables {
-		variables = append(variables, FormatVariable{name, values[environmentName]})
+		value := values[environmentName]
+		variables = append(variables, FormatVariable{name, variableTypeOf(value), value})
 	}
 	sort.Sort(variables)
 
@@ -87,23 +88,4 @@ func getFormatsList() []string {
 		list = append(list, k)
 	}
 	return list
-}
-
-type FormatVariable struct {
-	Name  string
-	Value interface{}
-}
-
-type FormatVariables []FormatVariable
-
-func (p FormatVariables) Len() int {
-	return len(p)
-}
-
-func (p FormatVariables) Swap(i, j int) {
-	p[i], p[j] = p[j], p[i]
-}
-
-func (p FormatVariables) Less(i, j int) bool {
-	return p[i].Name < p[j].Name
 }
