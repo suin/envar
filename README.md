@@ -3,6 +3,7 @@
 
 Define environment variables in one place and make it easy to manage variables.
 
+[![Build Status](https://drone.io/github.com/suin/envar/status.png)](https://drone.io/github.com/suin/envar/latest)
 
 ## Problems in web application environments
 
@@ -43,7 +44,7 @@ $ envar print dev
 export DB_HOST="localhost"
 export DB_NAME="myapp"
 export DB_PASS="root"
-export DB_PORT="3306"
+export DB_PORT=3306
 export DB_USER="root"
 ```
 
@@ -54,7 +55,7 @@ $ envar print prod
 export DB_HOST="production.example.ap-northeast-1.rds.amazonaws.com"
 export DB_NAME="myapp"
 export DB_PASS="FzN9HUrTox"
-export DB_PORT="3306"
+export DB_PORT=3306
 export DB_USER="rdsadmin"
 ```
 
