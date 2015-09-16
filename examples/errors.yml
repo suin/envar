@@ -1,0 +1,7 @@
+# this YAML file describe invaild definition examples
+environments: [dev, stag, prod]
+variables:
+  NOT_ENOUGH_VALUES: [A, B] # production value is missing
+  TOO_MANY_VALUES: [A, B, C, D]
+  CYCLIC_ENVIRONMENT_SYMBOLS: [A, {prod}, {stag}] # stag -> prod, prod -> stag
+  UNDEFINED_ENVIRONMENT_SYMBOL: [A, {testing}, C]

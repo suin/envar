@@ -1,0 +1,10 @@
+environments: [dev, stag, prod]
+variables:
+  DB_HOST:
+    - localhost
+    - staging.example.ap-northeast-1.rds.amazonaws.com
+    - production.example.ap-northeast-1.rds.amazonaws.com
+  DB_PORT: 3306
+  DB_USER: [root, rdsadmin, {stag}]   # {stag} means that production username is same as staging one.
+  DB_PASS: [root, FzN9HUrTox, {stag}] # {stag} means that production password is same as staging one.
+  DB_NAME: [myapp, myapp_stag, {dev}] # {stag} means that production db name is same as development one.

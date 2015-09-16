@@ -1,0 +1,5 @@
+environments: [dev, stag, prod]
+variables:
+  VAR1: foo
+  VAR2: bar
+  VAR3: [A, B, C]
