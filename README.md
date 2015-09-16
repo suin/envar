@@ -189,6 +189,10 @@ variables:
   DB_PASS: [root, FzN9HUrTox, {stag}]
 ```
 
+## Help English improvements
+
+I'm not native English speaker, so English improvements are welcome!
+
 ## License
 
 The MIT License (MIT)
