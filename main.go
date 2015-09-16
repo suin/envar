@@ -46,7 +46,7 @@ func main() {
 
 func printCmd(c *cli.Context) {
 	if len(c.Args()) == 0 {
-		fmt.Fprintf(os.Stderr, "Environment name must be specified")
+		fmt.Fprintf(os.Stderr, "Environment name must be specified\n")
 		os.Exit(1)
 	}
 	environmentName := c.Args()[0]
