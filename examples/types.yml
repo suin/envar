@@ -21,3 +21,4 @@ variables:
     second line
   STRING_VALUE7: !!str 1234
   STRING_VALUE8: ""
+  STRING_VALUE9: foo\nbar

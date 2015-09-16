@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 )
 
 func formatEnvfile(environmentName string, variables []FormatVariable) string {
@@ -12,10 +11,6 @@ func formatEnvfile(environmentName string, variables []FormatVariable) string {
 		switch variable.Type {
 		case Null:
 			value = ""
-		case String:
-			b := []byte{}
-			b = strconv.AppendQuote(b, fmt.Sprintf("%v", variable.Value))
-			value = string(b)
 		default:
 			value = fmt.Sprintf("%v", variable.Value)
 		}
