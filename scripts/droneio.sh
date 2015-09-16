@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 APP_NAME="envar"
 APP_OS="linux darwin windows"
 APP_ARCH="386 amd64"
