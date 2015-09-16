@@ -67,11 +67,16 @@ func printCmd(c *cli.Context) {
 		}
 		os.Exit(1)
 	}
+	if (environmentExists(config.Environments, environmentName) == false) {
+		fmt.Fprintf(os.Stderr, "No such a environment: %s\n", environmentName)
+		os.Exit(1)
+	}
+
 	variables := FormatVariables{}
 	for name, values := range config.Variables {
 		variables = append(variables, FormatVariable{name, values[environmentName]})
 	}
-	sort.Sort(variables) // return はされない点には注意
+	sort.Sort(variables)
 
 	fmt.Fprintf(os.Stdout, format(environmentName, variables))
 }
