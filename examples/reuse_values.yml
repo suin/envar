@@ -1,0 +1,29 @@
+# This is a example to reuse values by using YAML anchor and reference.
+
+environments: [dev, stag, prod]
+# define values to reuse
+values:
+  - &db_user root
+  - &db_pass mypass
+  - &db_host [127.0.0.1, staging.db.local, production.db.local]
+  #    |       `--- values
+  #    `--- anchor names
+variables:
+  BACKEND_DB_USER: *db_user
+  BACKEND_DB_PASS: *db_pass
+  BACKEND_DB_HOST: *db_host
+  FRONTEND_DB_USER: *db_user
+  FRONTEND_DB_PASS: *db_pass
+  FRONTEND_DB_HOST: *db_host
+  #                   `--- references
+
+# Output will be like following:
+#
+# $ envar print prod -f reuse_values.yml
+# # environment: prod
+# export BACKEND_DB_HOST="production.db.local"
+# export BACKEND_DB_PASS="mypass"
+# export BACKEND_DB_USER="root"
+# export FRONTEND_DB_HOST="production.db.local"
+# export FRONTEND_DB_PASS="mypass"
+# export FRONTEND_DB_USER="root"
