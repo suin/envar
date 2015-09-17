@@ -3,6 +3,9 @@
 
 Define environment variables in one place and make it easy to manage variables.
 
+
+![](https://raw.githubusercontent.com/suin/envar/master/demo.gif)
+
 [![Build Status](https://drone.io/github.com/suin/envar/status.png)](https://drone.io/github.com/suin/envar/latest)
 
 ## Problems in web application environments
