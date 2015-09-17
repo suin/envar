@@ -14,6 +14,7 @@ var Version string
 var formats = map[string]func(string, []FormatVariable) string{
 	"export":  formatExport,
 	"envfile": formatEnvfile,
+	"docker":  formatDocker,
 }
 
 func main() {
