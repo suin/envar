@@ -18,6 +18,7 @@ Envar solves these problems by defining environment variables in single YAML fil
 * Manages environment variables in a single YAML file.
 * Validates environment variables definition and warns errors if there are missing variables.
 * A simple CLI tool which runs any major platforms: Linux, Mac and Windows.
+* Desinged for working with Docker.
 
 ## YAML definition example
 
@@ -250,6 +251,67 @@ export DB_PASS="weTuCgRy7n"
 export DB_PASSWD="weTuCgRy7n"
 export DB_PASSWORD="weTuCgRy7n"
 ```
+
+## Working with Docker
+
+Envar is designed to cooperate with Docker.
+
+Envar provides output formats for `docker run` command. The first option is `docker` format. This produces arguments which docker command recognizes as environment variables:
+
+```console
+$ envar print dev -o docker
+-e VAR1=foo -e VAR2=bar -e VAR3=A
+```
+
+This output can be injected into `docker run` command by quoting backticks:
+
+```console
+$ docker run `envar print dev -o docker` ubuntu env
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=38cecdaf33a2
+VAR1=foo
+VAR2=bar
+VAR3=A
+HOME=/root
+```
+
+The second option is `envfile` format. This is also recognized by Docker and docker-compose.
+
+```shell-session
+$ envar print dev -o envfile > envar.env
+$ docker run --env-file envar.env ubuntu env
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=7a7c1df9a6c1
+VAR1=foo
+VAR2=bar
+VAR3=A
+HOME=/root
+```
+
+For docker-compose, set envfile path in `env_file` field of `docker-compose.yml`:
+
+```yaml
+myapp:
+  image: ubuntu
+  command: env
+  env_file: ./envar.env
+```
+
+
+
+```shell-session
+$ envar print dev -o envfile > envar.env
+$ docker-compose run myapp
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=01318c21469a
+TERM=xterm
+VAR1=foo
+VAR2=bar
+VAR3=A
+HOME=/root
+```
+
+
 
 ## Help English improvements
 

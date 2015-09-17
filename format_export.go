@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 )
 
 func formatExport(environmentName string, variables []FormatVariable) string {
@@ -13,9 +12,7 @@ func formatExport(environmentName string, variables []FormatVariable) string {
 		case Null:
 			value = ""
 		case String:
-			b := []byte{}
-			b = strconv.AppendQuote(b, fmt.Sprintf("%v", variable.Value))
-			value = string(b)
+			value = quoteString(variable.Value)
 		default:
 			value = fmt.Sprintf("%v", variable.Value)
 		}
