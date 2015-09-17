@@ -1,0 +1,5 @@
+environments: [dev, stag, prod]
+variables:
+  DB_PASS: &db_pass [mypass, FzN9HUrTox, weTuCgRy7n]
+  DB_PASSWORD: *db_pass
+  DB_PASSWD: *db_pass

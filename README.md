@@ -229,6 +229,28 @@ export FRONTEND_DB_PASS="mypass"
 export FRONTEND_DB_USER="root"
 ```
 
+#### Variable aliases
+
+With anchors and references, it is possible to make aliases for several variables. This tips is useful in the case of defining different name variable with same value.
+
+```yaml
+environments: [dev, stag, prod]
+variables:
+  DB_PASS: &db_pass [mypass, FzN9HUrTox, weTuCgRy7n]
+  DB_PASSWORD: *db_pass
+  DB_PASSWD: *db_pass
+```
+
+Output will be like following:
+
+```
+$ envar print prod -f examples/aliases.yml
+# environment: prod
+export DB_PASS="weTuCgRy7n"
+export DB_PASSWD="weTuCgRy7n"
+export DB_PASSWORD="weTuCgRy7n"
+```
+
 ## Help English improvements
 
 I'm not native English speaker, so English improvements are welcome!
