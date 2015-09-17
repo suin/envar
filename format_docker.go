@@ -15,7 +15,7 @@ func formatDocker(environmentName string, variables []FormatVariable) string {
 		default:
 			value = fmt.Sprintf("%v", variable.Value)
 		}
-		arguments = append(arguments, "-e "+quoteString(fmt.Sprintf("%s=%s", variable.Name, value)))
+		arguments = append(arguments, fmt.Sprintf("-e %s=%s", variable.Name, value))
 	}
 	return strings.Join(arguments, " ")
 }
